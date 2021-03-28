@@ -1,5 +1,5 @@
-# Cura_Anycubic_MegaS_Profile
- Printer Profile for Mega Printers with Knutwurst
+# Cura Anycubic MegaS Profile
+ Printer Profile for Mega Printers (Standard, S, Pro) with Knutwurst. For larger printers the bed size as to be adapted.
  
 ## Installation
 Download the files and move the files to the Cura installation folders like C:\Program Files\Ultimaker Cura 4.8.0\resources. Under windows you can also use the AppData folder within your profile like C:\Users\<Username>\AppData\Roaming\cura\4.8
@@ -18,4 +18,5 @@ To enable every setting in the materials you can install this plugin: https://ma
  * If "Travel Speed" is higher than 150mm/s a warning occurs
  * Combining is initially off
  * If support is enabled "Build Plate Adhesion Type" will be set to none so no Skirt will be printed
- * GCode Start script is changed to support initial print and bed temperatures (parallel heatup) 
+ * GCode Start script is changed to support initial print and bed temperatures (parallel heatup)
+ * Set retraction speed to 25 as this is the max. firmware setting. Maximum value constraint to 40, but has to be enabled in firmware.
