@@ -1,6 +1,6 @@
 {
     "version": 2,
-    "name": "Anycubic i3 Mega (S, Pro)",
+    "name": "Anycubic i3 Mega S/Pro",
     "inherits": "fdmprinter",
     "metadata":
     {
@@ -21,7 +21,7 @@
 
     "overrides":
     {
-        "machine_name": { "default_value": "Anycubic i3 Mega (S, Pro)" },
+        "machine_name": { "default_value": "Anycubic i3 Mega S/Pro" },
         "machine_heated_bed": { "default_value": true },
         "machine_width": { "default_value": 210 },
         "machine_height": { "default_value": 205 },
@@ -29,7 +29,7 @@
         "machine_center_is_zero": { "default_value": false },
         "gantry_height": { "value": "0" },
         "machine_gcode_flavor": { "default_value": "RepRap (Marlin/Sprinter)" },
-        "machine_start_gcode": { "default_value": "G21                                        ; metric values \nG90                                        ; absolute positioning \nM82                                        ; set extruder to absolute mode \nM107                                       ; start with the fan off \nM140 S{material_bed_temperature_layer_0}           ; Start heating the bed \nG4 S60                                     ; wait 1 minute \nM104 S{material_initial_print_temperature}         ; start heating the hot end \nM190 S{material_bed_temperature_layer_0}           ; wait for bed \nM109 S{material_initial_print_temperature}         ; wait for hotend \nM300 S1000 P500                            ; BEEP heating done \nG28 X0 Y10 Z0                              ; move X/Y to min endstops \nM420 S1                                    ; Enable leveling \nM420 Z2.0                                  ; Set leveling fading height to 2 mm \nG0 Z0.15                                   ; lift nozzle a bit \nG92 E0                                     ; zero the extruded length \nG1 X50 E25 F500                            ; Extrude 25mm of filament in a 5cm line. \nG92 E0                                     ; zero the extruded length again \nG1 E-2 F500                                ; Retract a little \nG1 X120 F4000                              ; Quickly wipe away from the filament line`" },
+        "machine_start_gcode": { "default_value": ";Slicer info:material_guid;Material GUID;{material_guid}\n;Slicer info:material_id;Material ID;{material_id}\n;Slicer info:material_brand;Material Brand;{material_brand}\n;Slicer info:material_name;Material Name;{material_name}\nG21                                        ; metric values \nG90                                        ; absolute positioning \nM82                                        ; set extruder to absolute mode \nM107                                       ; start with the fan off \nM140 S{material_bed_temperature_layer_0}   ; Start heating the bed \nG4 S60                                     ; wait 1 minute \nM104 S{material_print_temperature_layer_0} ; start heating the hot end \nM190 S{material_bed_temperature_layer_0}   ; wait for bed \nM109 S{material_print_temperature_layer_0} ; wait for hotend \nM300 S1000 P500                            ; BEEP heating done \nG28 X0 Y10 Z0                              ; move X/Y to min endstops \nM420 S1                                    ; Enable leveling \nM420 Z2.0                                  ; Set leveling fading height to 2 mm \nG0 Z0.15                                   ; lift nozzle a bit \nG92 E0                                     ; zero the extruded length \nG1 X50 E25 F500                            ; Extrude 25mm of filament in a 5cm line. \nG92 E0                                     ; zero the extruded length again \nG1 E-2 F500                                ; Retract a little \nG1 X120 F4000                              ; Quickly wipe away from the filament line`" },
         "machine_end_gcode": { "default_value": "M104 S0                                    ; Extruder off \nM140 S0                                    ; Heatbed off \nM107                                       ; Fan off \nG91                                        ; relative positioning \nG1 E-5 F300                                ; retract a little \nG1 Z+10 E-5 ; X-20 Y-20 F{travel_xy_speed} ; lift print head \nG28 X0 Y0                                  ; homing \nG1 Y180 F2000                              ; reset feedrate \nM84                                        ; disable stepper motors \nG90                                        ; absolute positioning \nM300 S440 P200                             ; Make Print Completed Tones \nM300 S660 P250                             ; beep \nM300 S880 P300                             ; beep" },
 
         "machine_max_acceleration_x": { "value": 3000 },
@@ -43,8 +43,10 @@
         "machine_max_jerk_e": { "value": 5 },
 
         "material_diameter": { "default_value": 1.75 },
+        "material_print_temperature_layer_0": { "value": "material_print_temperature + 5"},
+        "material_flow": { "value": 100 },
 
-        "acceleration_print": { "value": 1800 },
+        "acceleration_print": { "value": 1500 },
         "acceleration_travel": { "value": 3000 },
         "acceleration_travel_layer_0": { "value": "acceleration_travel" },
         "acceleration_roofing": { "enabled": "acceleration_enabled and roofing_layer_count > 0 and top_layers > 0" },
@@ -75,9 +77,6 @@
 
         "optimize_wall_printing_order": { "value": "True" },
 
-        "material_initial_print_temperature": { "value": "material_print_temperature + 10" },
-        "material_final_print_temperature": { "value": "material_print_temperature" },
-        "material_flow": { "value": 100 },
         "travel_compensate_overlapping_walls_0_enabled": { "value": "False" },
         
         "infill_sparse_density": { "value": 25 },
@@ -115,6 +114,7 @@
         "skirt_gap": { "value": 5.0 },
         "skirt_line_count": { "value": 4 },
 
+        "meshfix_maximum_deviation": { "value": 0.05 },
        
         "support_angle": { "value": "math.floor(math.degrees(math.atan(line_width / 2.0 / layer_height)))" },
         "support_pattern": { "value": "'zigzag'" },
@@ -123,14 +123,15 @@
         "support_xy_distance": { "value": "wall_line_width_0 * 2" },
         "support_xy_distance_overhang": { "value": "wall_line_width_0" },
         "support_z_distance": { "value": "layer_height if layer_height >= 0.16 else layer_height * 2" },
+        "support_top_distance": { "value":  "extruderValue(support_roof_extruder_nr if support_roof_enable else support_infill_extruder_nr, 'support_z_distance') + (layer_height if support_structure == 'tree' else 0)"},
         "support_xy_overrides_z": { "value": "'xy_overrides_z'" },
         "support_wall_count": { "value": 1 },
         "support_brim_enable": { "value": true },
         "support_brim_width": { "value": 4 },
 
         "support_interface_enable": { "value": true },
-		"support_structure": { "value": "'tree'" },
-		"support_type": { "value": "'buildplate' if support_structure == 'tree' else 'everywhere'" },
+        "support_structure": { "value": "'tree'" },
+        "support_type": { "value": "'buildplate' if support_structure == 'tree' else 'everywhere'" },
         "support_interface_height": { "value": "layer_height * 4" },
         "support_interface_density": { "value": 33.333 },
         "support_interface_pattern": { "value": "'grid'" },
