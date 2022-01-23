@@ -3,7 +3,8 @@ Printer Profile for Mega Printers (Standard, S, Pro) and now also X
  
 ## Installation
 Download the files and move the files to the Cura installation folders like C:\Program Files\Ultimaker Cura 4.8.0\resources. Under windows you can also use the AppData folder within your profile like C:\Users\<Username>\AppData\Roaming\cura\4.8
-Profiles are integrated in Cura 4.10 and newer by default.
+
+Profiles are integrated in Cura 4.10 and newer by default but it has to be integration with the standard release cycle. So here you can get the newest version.
 
 ## What this printer profile does?
 I created this printer profile because the one contained in Cura 4.8 does not support central settings. The standard dependency in Cura is Printer Settings -> Material Settings -> Quality Settings. So I moved every configuration to the printer.
