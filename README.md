@@ -23,3 +23,4 @@ To enable every setting in the materials you can install this plugin: https://ma
  * GCode Start script is changed to support initial print and bed temperatures (parallel heatup)
  * Set retraction speed to 25 as this is the max. firmware setting. Maximum value constraint to 40, but has to be enabled in firmware.
  * Support for additional metadata for OctoPrint-Slicer Print Time Estimator https://github.com/NilsRo/OctoPrint-SlicerEstimator
+ * Dynamic wall thickness dependent by nozzle diameter
