@@ -1,0 +1,23 @@
+{
+    "version": 2,
+    "name": "Anycubic i3 Mega S/Pro - Klipper",
+    "inherits": "anycubic_i3_mega_s",
+    "metadata":
+	{
+        "quality_definition": "anycubic_i3_mega_s"        
+    },
+    "overrides":
+    {		
+		"machine_width": { "default_value": 220 },
+        "machine_height": { "default_value": 210 },
+        "machine_depth": { "default_value": 220 },
+		"machine_start_gcode": { "default_value": ";Profil Homepage: https://github.com/NilsRo/Cura_Anycubic_MegaS_Profile\n\n;Slicer Information - (Support for OctoPrint Slicer Estimator)\n;Slicer info:material_guid;{material_guid}\n;Slicer info:material_id;{material_id}\n;Slicer info:material_brand;{material_brand}\n;Slicer info:material_name;{material_name}\n;Slicer info:filament_cost;{filament_cost}\n;Slicer info:material_bed_temperature;{material_bed_temperature}\n;Slicer info:material_bed_temperature_layer_0;{material_bed_temperature_layer_0}\n;Slicer info:material_print_temperature;{material_print_temperature}\n;Slicer info:material_print_temperature_layer_0;{material_print_temperature_layer_0}\n;Slicer info:material_flow;{material_flow}\n;Slicer info:layer_height;{layer_height}\n;Slicer info:machine_nozzle_size;{machine_nozzle_size}\n;Slicer info:wall_thickness;{wall_thickness}\n;Slicer info:speed_print;{speed_print}\n;Slicer info:speed_topbottom;{speed_topbottom}\n;Slicer info:travel_speed;{travel_speed}\n;Slicer info:support;{support}\n;Slicer info:retraction_speed;{retraction_speed}\n;Slicer info:retraction_amount;{retraction_amount}\n;Slicer info:layer_height;{layer_height}\n;Slicer info:infill_pattern;{infill_pattern}\n;Slicer info:infill_sparse_density;{infill_sparse_density}\n;Slicer info:cool_fan_enabled;{cool_fan_enabled}\n;Slicer info:cool_fan_speed;{cool_fan_speed}\n;Slicer info:sliced_at;{day} {date} {time}\nSTART_PRINT BED_TEMP={material_bed_temperature_layer_0} EXTRUDER_TEMP={material_print_temperature_layer_0}" },
+		"machine_end_gcode": { "default_value": "END_PRINT" },
+        "machine_name": { "default_value": "Anycubic i3 Mega S/Pro - Klipper" },
+        "jerk_enabled": { "value": false },
+        "retraction_hop_enabled": { "value": false },
+        "retraction_amount": { "value": 3 },
+        "retraction_enabled": { "value": true },
+		"firmware_retraction": { "value": true }
+    }
+}
