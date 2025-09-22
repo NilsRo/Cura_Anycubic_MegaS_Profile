@@ -16,7 +16,7 @@
         "machine_name": { "default_value": "Anycubic i3 Mega S/Pro - Klipper" },
         "jerk_enabled": { "value": false },
         "retraction_hop_enabled": { "value": false },
-        "retraction_amount": { "value": 3 },
+        "retraction_amount": { "value": 5 },
         "retraction_enabled": { "value": true },
 		"firmware_retraction": { "value": true }
     }
